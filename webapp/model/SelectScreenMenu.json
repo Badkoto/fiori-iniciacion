@@ -1,6 +1,6 @@
 {
     "ShipName": "",
-    "CountryName": "",
+    "CountryKey": "",
     "Countries":[
         {
             "key":"Germany",
@@ -13,11 +13,7 @@
         {
             "key":"Mexico",
             "text":"Mexico"
-        },
-        {
-            "key":"Germany",
-            "text":"Germany"
-        },
+        },     
         {
             "key":"Sweden",
             "text":"Sweden"
