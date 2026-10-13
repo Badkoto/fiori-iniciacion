@@ -10,6 +10,10 @@ server:
       afterMiddleware: compression
       configuration:
         ignoreCertErrors: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
+        backend:                          # NUEVO: backend al que se reenvían las peticiones OData
+          - path: /V2                     # Toda petición que empiece con /V2 se reenvía
+            url: https://northwind.dest # URL base del servicio
+            # destination: Northwind  
         ui5:
           path:
             - /resources

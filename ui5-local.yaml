@@ -28,6 +28,9 @@ server:
     - name: fiori-tools-proxy
       afterMiddleware: compression
       configuration:
+        backend:
+        - path: /V2
+          url: https://northwind.dest
         ignoreCertErrors: false # If set to true, certificate errors will be ignored. E.g. self-signed certificates will be accepted
 builder:
   resources:
