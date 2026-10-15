@@ -39,10 +39,12 @@ function(Controller) {
             
             // Obtiene la referencia a la vista actual, para poder asignarle el modelo más abajo.
             const oView = this.getView();
-            
-            // Carga los datos del archivo JSON de forma asíncrona desde la ruta especificada
-            // (relativa a la raíz de la app, dentro de la carpeta "model").
-            oJSONModel.loadData("model/SelectScreenMenu.json");
+
+            // Ruta absoluta al JSON, independiente de la página que abra la app
+            const sPath = sap.ui.require.toUrl("logaligroup/invoices/model/SelectScreenMenu.json");
+
+            // Carga los datos del archivo JSON de forma asíncrona desde la ruta calculada arriba
+            oJSONModel.loadData(sPath);
             
             // Asigna el modelo cargado a la vista, con el nombre "selectionScreen".
             // Este nombre es el que se usa en el XML para hacer binding, ej: {selectionScreen>/Countries}
