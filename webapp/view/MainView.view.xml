@@ -28,6 +28,27 @@
                         class="sapUiSmallMarginEnd">
                 </Button>
             </Panel>
+            <Panel>
+            <List id="invoicesList" 
+                  headerText="{i18n>invoicesHeaderList}" 
+                  class="sapUiResponsiveMargin" 
+                  width="auto" 
+                  items="{/Invoices}">
+                  <items>
+                    <ObjectListItem id="invoiceItem"
+                                    title="{ShipName} - {Country}"
+                                    number="{parts : [{path:'ExtendedPrice'},
+                                                      {path: 'selectionScreen>/Currency'}],
+                                            type: 'sap.ui.model.type.Currency',
+                                            formatOptions:{
+                                                showMeasure: false
+                                            }}"
+                                    numberUnit="{selectionScreen>/Currency}"
+                                    numberState="{= ${ExtendedPrice} > 100 ? 'Success' : 'Warning'}">
+                    </ObjectListItem>
+                  </items>
+            </List>
+            </Panel>
         </content>
     </Page>
 </mvc:View>
