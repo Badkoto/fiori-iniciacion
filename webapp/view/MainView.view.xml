@@ -36,6 +36,8 @@
                   items="{/Invoices}">
                   <items>
                     <ObjectListItem id="invoiceItem"
+                                    type="Navigation" 
+                                    press="onItemPress"
                                     title="{ShipName} - {Country}"
                                     number="{parts : [{path:'ExtendedPrice'},
                                                       {path: 'selectionScreen>/Currency'}],

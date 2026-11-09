@@ -1,0 +1,22 @@
+<mvc:View controllerName="logaligroup.invoices.controller.Detail"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m"
+    xmlns:form="sap.ui.layout.form">
+    <Page id="detailPage" title="{i18n>detailPageTitle}"
+          showNavButton="true" navButtonPress="onNavBack">
+        <content>
+            <form:SimpleForm id="detailForm" editable="false" title="{ProductName}">
+                <Label id="lblShipName" text="{i18n>shipName}"/>
+                <Text id="txtShipName" text="{ShipName}"/>
+                <Label id="lblCountry" text="{i18n>country}"/>
+                <Text id="txtCountry" text="{Country}"/>
+                <Label id="lblQuantity" text="{i18n>quantity}"/>
+                <Text id="txtQuantity" text="{Quantity}"/>
+                <Label id="lblSalesperson" text="{i18n>salesperson}"/>
+                <Text id="txtSalesperson" text="{Salesperson}"/>
+                <Label id="lblPrice" text="{i18n>price}"/>
+                <Text id="txtPrice" text="{ExtendedPrice}"/>
+            </form:SimpleForm>
+        </content>
+    </Page>
+</mvc:View>

@@ -83,5 +83,12 @@ function(Controller, Filter, FilterOperator) {
             const oBinding = oList.getBinding("items");
             oBinding.filter([]);
         },
+        onItemPress:function(oEvent){
+            const oItem = oEvent.getSource();
+            const sPath = oItem.getBindingContext().getPath();
+            this.getOwnerComponent().getRouter().navTo("RouteDetail", {
+                invoicePath: window.encodeURIComponent(sPath.substr(1))
+            });
+        },
     });
 });
