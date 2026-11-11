@@ -33,21 +33,33 @@
                   headerText="{i18n>invoicesHeaderList}" 
                   class="sapUiResponsiveMargin" 
                   width="auto" 
-                  items="{/Invoices}">
-                  <items>
-                    <ObjectListItem id="invoiceItem"
-                                    type="Navigation" 
-                                    press="onItemPress"
-                                    title="{ShipName} - {Country}"
-                                    number="{parts : [{path:'ExtendedPrice'},
-                                                      {path: 'selectionScreen>/Currency'}],
-                                            type: 'sap.ui.model.type.Currency',
-                                            formatOptions:{
-                                                showMeasure: false
-                                            }}"
-                                    numberUnit="{selectionScreen>/Currency}"
-                                    numberState="{= ${ExtendedPrice} > 100 ? 'Success' : 'Warning'}">
-                    </ObjectListItem>
+                  items="{/Invoices}"
+                  updateFinished="onUpdateFinished">
+                <headerToolbar>
+                    <OverflowToolbar id="invoicesToolbar">
+                        <Title id="invoicesTitle" text="{i18n>invoicesHeaderList}"/>
+                        <ToolbarSpacer id="toolbarSpacer"/>
+                        <SearchField id="searchInvoices"
+                                    value="{selectionScreen>/SearchQuery}"
+                                    width="15rem"
+                                    placeholder="{i18n>search}"
+                                    search="onSearch"/>
+                    </OverflowToolbar>
+                </headerToolbar>
+                    <items>
+                        <ObjectListItem id="invoiceItem"
+                                        type="Navigation" 
+                                        press="onItemPress"
+                                        title="{ShipName} - {Country}"
+                                        number="{parts : [{path:'ExtendedPrice'},
+                                                        {path: 'selectionScreen>/Currency'}],
+                                                type: 'sap.ui.model.type.Currency',
+                                                formatOptions:{
+                                                    showMeasure: false
+                                                }}"
+                                        numberUnit="{selectionScreen>/Currency}"
+                                        numberState="{= ${ExtendedPrice} > 100 ? 'Success' : 'Warning'}">
+                        </ObjectListItem>
                   </items>
             </List>
             </Panel>

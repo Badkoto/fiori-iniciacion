@@ -90,5 +90,56 @@ function(Controller, Filter, FilterOperator) {
                 invoicePath: window.encodeURIComponent(sPath.substr(1))
             });
         },
+        onUpdateFinished:function(oEvent){
+            // El total puede no estar listo en la primera pasada, así que se comprueba
+            const oBinding = oEvent.getSource().getBinding("items");
+            if (oBinding.isLengthFinal()) {
+                const iTotal = oEvent.getParameter("total");
+                const oResourceBundle = this.getOwnerComponent().getModel("i18n").getResourceBundle();
+                this.byId("invoicesTitle").setText(oResourceBundle.getText("invoicesTitleCount", [iTotal]));
+            }
+        },
+        onFilter:function(){
+            this._applyFilters();
+        },
+
+        onSearch:function(){
+            this._applyFilters();
+        },
+
+        onClearFilter:function(){
+            const oModel = this.getView().getModel("selectionScreen");
+            oModel.setProperty("/ShipName", "");
+            oModel.setProperty("/CountryKey", "");
+            oModel.setProperty("/SearchQuery", "");
+            this._applyFilters();
+        },
+
+        _applyFilters:function(){
+            const oData = this.getView().getModel("selectionScreen").getData();
+            const aFilters = [];
+
+            if (oData.ShipName) {
+                aFilters.push(new Filter("ShipName", FilterOperator.Contains, oData.ShipName));
+            }
+            if (oData.CountryKey) {
+                aFilters.push(new Filter("Country", FilterOperator.EQ, oData.CountryKey));
+            }
+            if (oData.SearchQuery) {
+                // El texto libre se busca en tres campos y basta con que coincida en uno (O)
+                aFilters.push(new Filter({
+                    filters: [
+                        new Filter("ShipName", FilterOperator.Contains, oData.SearchQuery),
+                        new Filter("Country", FilterOperator.Contains, oData.SearchQuery),
+                        new Filter("ProductName", FilterOperator.Contains, oData.SearchQuery)
+                    ],
+                    and: false
+                }));
+            }
+
+            const oBinding = this.byId("invoicesList").getBinding("items");
+            // Todos los filtros deben cumplirse a la vez (Y)
+            oBinding.filter(aFilters.length ? new Filter({ filters: aFilters, and: true }) : []);
+        },
     });
 });

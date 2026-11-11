@@ -1,6 +1,7 @@
 {
     "ShipName": "",
     "CountryKey": "",
+    "SearchQuery": "",
     "Countries":[
         {
             "key":"Germany",
