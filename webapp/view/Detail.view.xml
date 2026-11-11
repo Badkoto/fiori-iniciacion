@@ -15,7 +15,11 @@
                 <Label id="lblSalesperson" text="{i18n>salesperson}"/>
                 <Text id="txtSalesperson" text="{Salesperson}"/>
                 <Label id="lblPrice" text="{i18n>price}"/>
-                <Text id="txtPrice" text="{ExtendedPrice}"/>
+                <ObjectNumber id="numPrice"
+                    number="{parts: [{path: 'ExtendedPrice'}, {path: 'selectionScreen>/Currency'}],
+                            type: 'sap.ui.model.type.Currency',
+                            formatOptions: {showMeasure: false}}"
+                    unit="{selectionScreen>/Currency}"/>
             </form:SimpleForm>
         </content>
     </Page>

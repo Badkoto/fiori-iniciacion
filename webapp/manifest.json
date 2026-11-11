@@ -67,6 +67,10 @@
         "dataSource": "mainService",
         "preload": true,
         "settings": {}
+      },
+      "selectionScreen": {
+        "type": "sap.ui.model.json.JSONModel",
+        "uri": "model/SelectScreenMenu.json"
       }
     },
     "resources": {

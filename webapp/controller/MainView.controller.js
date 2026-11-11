@@ -27,22 +27,22 @@ function(Controller, Filter, FilterOperator) {
         // antes de que se muestre en pantalla. Es el lugar típico para cargar modelos de datos.
         onInit:function() {
             
-            // Crea una nueva instancia de JSONModel, que permite manejar datos en formato JSON
-            // y enlazarlos (data binding) directamente a los controles de la vista.
-            const oJSONModel = new sap.ui.model.json.JSONModel();
+            // // Crea una nueva instancia de JSONModel, que permite manejar datos en formato JSON
+            // // y enlazarlos (data binding) directamente a los controles de la vista.
+            // const oJSONModel = new sap.ui.model.json.JSONModel();
             
-            // Obtiene la referencia a la vista actual, para poder asignarle el modelo más abajo.
-            const oView = this.getView();
+            // // Obtiene la referencia a la vista actual, para poder asignarle el modelo más abajo.
+            // const oView = this.getView();
 
-            // Ruta absoluta al JSON, independiente de la página que abra la app
-            const sPath = sap.ui.require.toUrl("logaligroup/invoices/model/SelectScreenMenu.json");
+            // // Ruta absoluta al JSON, independiente de la página que abra la app
+            // const sPath = sap.ui.require.toUrl("logaligroup/invoices/model/SelectScreenMenu.json");
 
-            // Carga los datos del archivo JSON de forma asíncrona desde la ruta calculada arriba
-            oJSONModel.loadData(sPath);
+            // // Carga los datos del archivo JSON de forma asíncrona desde la ruta calculada arriba
+            // oJSONModel.loadData(sPath);
             
-            // Asigna el modelo cargado a la vista, con el nombre "selectionScreen".
-            // Este nombre es el que se usa en el XML para hacer binding, ej: {selectionScreen>/Countries}
-            oView.setModel(oJSONModel, "selectionScreen");
+            // // Asigna el modelo cargado a la vista, con el nombre "selectionScreen".
+            // // Este nombre es el que se usa en el XML para hacer binding, ej: {selectionScreen>/Countries}
+            // oView.setModel(oJSONModel, "selectionScreen");
         },
                 // Se ejecuta al pulsar el botón "Filtrar": arma los filtros según lo que el usuario
         // escribió y eligió, y se los aplica a la lista de facturas.
