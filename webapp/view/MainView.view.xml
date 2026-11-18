@@ -30,11 +30,13 @@
             </Panel>
             <Panel>
             <List id="invoicesList" 
-                  headerText="{i18n>invoicesHeaderList}" 
-                  class="sapUiResponsiveMargin" 
-                  width="auto" 
-                  items="{/Invoices}"
-                  updateFinished="onUpdateFinished">
+                    class="sapUiResponsiveMargin"
+                    width="auto"
+                    items="{/Invoices}"
+                    growing="true"
+                    growingThreshold="20"
+                    noDataText="{i18n>noInvoices}"
+                    updateFinished="onUpdateFinished">
                 <headerToolbar>
                     <OverflowToolbar id="invoicesToolbar">
                         <Title id="invoicesTitle" text="{i18n>invoicesHeaderList}"/>
